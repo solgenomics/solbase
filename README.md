@@ -15,11 +15,12 @@ Other databases using this code include
 
 ## Docker Install
 Use this if you would like to have a stand alone installation of solbase on your own server in a Docker container 
-
+https://github.com/solgenomics/solbase/tree/master/docker
 
 ## Vagrant Install
 Use this if you would like to run solbase on a Virtual machine 
 Useful for development purposes 
+https://github.com/solgenomics/solbase/tree/master/vagrant
 
 
 ## Manual Install
