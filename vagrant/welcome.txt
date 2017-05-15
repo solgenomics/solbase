@@ -26,7 +26,7 @@
 Things you should do to finish setting up this VM:
 This file found in config/welcome.txt
 
-1. Customize the resources allocated to the guest VM. Default is 1 CPU, 2048MB RAM, 32 MB Video RAM, 20 GB hard disk.
+1. Customize the resources allocated to the guest VM. Default is 1 CPU, 2048MB RAM, 32 MB Video RAM, 10 GB hard disk.
 
 	1) Shutdown guest VM
 	2) Go to VM settings and change CPU and RAM settings for better performance.
