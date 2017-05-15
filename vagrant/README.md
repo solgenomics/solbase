@@ -25,6 +25,7 @@ Step 2: Open VirtualBox and click File->Import Appliance. Select 'SGN Dev.ova'.<
 Step 3: Start the virtual machine.<br/>
 
 <br/>
+
 ## Purpose 2 Tutorial
 
 Install Vagrant from https://www.vagrantup.com/downloads.html 
