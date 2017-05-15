@@ -3,12 +3,14 @@ solbase is a web-based database for genome,phenome, and breeding data.
 It is based on the code for https://solgenomics.net
 See the main github repo for the code https://github.com/solgenomics/sgn
 
+Users can customize the appearance of their own custom web site using skins and other simple configuration changes.
+
 Other databases using this code include 
-https://cassavabase.net
-https://yambase.org
-https://sweetpotatobase.org
-https://musabase.org
-https://citrusgreening.org
+* https://cassavabase.net
+* https://yambase.org
+* https://sweetpotatobase.org
+* https://musabase.org
+* https://citrusgreening.org
 
 
 ## Manual Install
