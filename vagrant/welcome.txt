@@ -1,0 +1,85 @@
+###########################################################################
+          _____                    _____                    _____          
+         /\    \                  /\    \                  /\    \         
+        /::\    \                /::\    \                /::\____\        
+       /::::\    \              /::::\    \              /::::|   |        
+      /::::::\    \            /::::::\    \            /:::::|   |        
+     /:::/\:::\    \          /:::/\:::\    \          /::::::|   |        
+    /:::/__\:::\    \        /:::/  \:::\    \        /:::/|::|   |        
+    \:::\   \:::\    \      /:::/    \:::\    \      /:::/ |::|   |        
+  ___\:::\   \:::\    \    /:::/    / \:::\    \    /:::/  |::|   | _____  
+ /\   \:::\   \:::\    \  /:::/    /   \:::\ ___\  /:::/   |::|   |/\    \ 
+/::\   \:::\   \:::\____\/:::/____/  ___\:::|    |/:: /    |::|   /::\____\
+\:::\   \:::\   \::/    /\:::\    \ /\  /:::|____|\::/    /|::|  /:::/    /
+ \:::\   \:::\   \/____/  \:::\    /::\ \::/    /  \/____/ |::| /:::/    / 
+  \:::\   \:::\    \       \:::\   \:::\ \/____/           |::|/:::/    /  
+   \:::\   \:::\____\       \:::\   \:::\____\             |::::::/    /   
+    \:::\  /:::/    /        \:::\  /:::/    /             |:::::/    /    
+     \:::\/:::/    /          \:::\/:::/    /              |::::/    /     
+      \::::::/    /            \::::::/    /               /:::/    /      
+       \::::/    /              \::::/    /               /:::/    /       
+        \::/    /                \::/____/                \::/    /        
+         \/____/                                           \/____/         
+                                                                           
+###########################################################################
+
+Things you should do to finish setting up this VM:
+This file found in config/welcome.txt
+
+1. Customize the resources allocated to the guest VM. Default is 1 CPU, 2048MB RAM, 32 MB Video RAM, 20 GB hard disk.
+
+	1) Shutdown guest VM
+	2) Go to VM settings and change CPU and RAM settings for better performance.
+	3) To change hard disk size follow these instructions: 
+		a) Turn off VM
+		b) On Host: cd ~/Virtualbox VMs/   Find the .vmdk file for the machine you want to resize.
+		c) VBoxManage clonehd box-disk1.vmdk box-disk1.vdi --format vdi
+		On Windows, VBoxManage may not be recognized, so instead you can use: "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" clonehd box-disk1.vmdk box-disk1.vdi --format vdi
+		d) VBoxManage modifyhd box-disk1.vdi --resize 40960
+		e) Open virtualbox manager, click New->Expert Mode
+		f) Enter a name, Linux, and Debian 64, amount of RAM, and select the .vdi file as an existing virtual hard disk. Click Create
+		g) Download amd64.iso GParted from here https://sourceforge.net/projects/gparted/files/gparted-live-stable/0.14.1-6/
+		h) In Virtualbox Manager, go to settings for the machine you just created. Click Storage->Attach Optical Drive and select the GParted iso as the CD.
+		i) Boot the VM. GParted will boot. Expand the main partition into the new space https://www.rootusers.com/use-gparted-to-increase-disk-size-of-a-linux-native-partition/
+		j) Remove the GParted CD from the VM, and reboot your machine. You're done!
+		
+
+2. Install the VirtualBox Guest Additions on the VM. This is dependant on the version of virtual box you have on your host and so cannot be done through provisioning.
+	
+	1) On the guest VirtualBox, click Devices -> Insert Guest Additions CD Image
+	2) sudo mount /dev/sr0 /mnt
+	3) cd /mnt
+	4) sudo ./VBoxLinuxAdditions.run
+	5) Eject CD and restart guest 
+
+3. Setup your GitHub account on the new guest VM.
+
+	1) git config --global user.name "your_username"
+	2) git config --global user.email "your_email@example.com"
+	
+	Pair rsa keys from this VM to GitHub
+	1) ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+	2) Press Enter to save rsa to default location
+	3) Enter a passphrase for this rsa key 
+	4) ssh-add ~/.ssh/id_rsa
+	5) emacs /home/vagrant/.ssh/id_rsa.pub
+	6) Copy the entire contents shown
+	7) Go to https://github.com/settings/keys and click Add Key, then paste the contents of id_rsa.pub into the key field. Click Add SSH Key.
+	
+	For pushing to SGN GitHub repo without entering username and password every time.
+	1) cd /home/vagrant/cxgn/sgn
+	2) git remote set-url origin git@github.com:solgenomics/sgn.git
+	Do the same for any git repo on the machine that you regularly push to.
+
+4. Customize GUI
+
+	1) Launch Gnome Tweak Tool.
+	2) Enable common extensions, such as  "Alternatetab", "Applications menu", "Places status indicator", and "Window list".
+	3) Change screen lock time by goint to Settings -> Brightness and Lock.
+
+###################################################
+ /\  /\   ___  ___   __   __   __ __  ___   /\  /\ 
+|/\||/\| | _ \| __| /  \ | _\ |  V  || __| |/\||/\|
+         | v /| _| | /\ || v || \_/ || _|          
+         |_|_\|___||_||_||__/ |_| |_||___|         
+###################################################
