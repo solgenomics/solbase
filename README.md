@@ -6,7 +6,7 @@ See the main github repo for the code https://github.com/solgenomics/sgn
 Users can customize the appearance of their own custom web site using skins and other simple configuration changes.
 
 Other databases using this code include 
-* https://cassavabase.net
+* https://cassavabase.org
 * https://yambase.org
 * https://sweetpotatobase.org
 * https://musabase.org
