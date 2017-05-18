@@ -4,14 +4,14 @@
 
 ## Docker Cloud Repository
 
-Built docker containers are available here https://cloud.docker.com/swarm/muellerlab/repository/docker/muellerlab/solbase/general
+Built docker containers for solbase are available here https://hub.docker.com/r/muellerlab/solbase/
 
 ## Running a Single Container
 
 Container version numbers can be found in the docker repository above.
 
 ```
-docker run muellerlab/solbase:1.01
+docker run muellerlab/solbase:1.05
 ```
 
 ## Running a Swarm of Containers
@@ -22,7 +22,7 @@ Copy this docker-compose.yml file onto your machine.
 version: "3"
 services:
   solbase:
-    image: muellerlab/solbase:1.01
+    image: muellerlab/solbase:1.05
     links: postgres
     deploy:
       replicas: 5
