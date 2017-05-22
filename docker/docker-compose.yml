@@ -15,8 +15,6 @@ services:
         condition: on-failure
     ports:
       - "3000:3000"
-    volumes:
-      - ./solbase:/
   postgres:
     image: postgres:9.5
     ports:

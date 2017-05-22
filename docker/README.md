@@ -23,19 +23,19 @@ version: "3"
 services:
   solbase:
     image: muellerlab/solbase:1.05
-    links: postgres
+    depends_on:
+      - postgres
+      - nginx
     deploy:
       replicas: 5
       resources:
         limits:
           cpus: "0.1"
-          memory: 100M
+          memory: 50M
       restart_policy:
         condition: on-failure
     ports:
-      - "80:80"
-    networks:
-      - webnet
+      - "3000:3000"
   postgres:
     image: postgres:9.5
     ports:
@@ -43,13 +43,14 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=fixture
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
-    networks:
-      - webnet
-networks:
-  webnet:
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/
 ```
 
 Then execute
