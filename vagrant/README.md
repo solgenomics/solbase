@@ -23,6 +23,7 @@ https://www.virtualbox.org/wiki/Downloads
 Step 1: Download the VirtualBox virtual machine from here: ftp://solgenomics.net/virtualbox/SGN%20Dev.ova .<br/>
 Step 2: Open VirtualBox and click File->Import Appliance. Select 'SGN Dev.ova'.<br/>
 Step 3: Start the virtual machine.<br/>
+Step 4: Open a browser and you should see solbase running on localhost.<br/>
 
 <br/>
 
@@ -44,7 +45,8 @@ This may take around an hour or two
 
 Step 3: Open VirtualBox. The newly generated virtual machine will show up.<br/>
 Step 4: Start the virtual machine.<br/>
-Step 5: Follow the welcome.txt instructions to fully customize the virtual machine to your needs.<br/>
+Step 5: Open a browser and you should see solbase running on localhost.<br/>
+Optional: Follow the welcome.txt instructions to fully customize the virtual machine to your needs.<br/>
 
 To remove any trace of the VM
 ```
