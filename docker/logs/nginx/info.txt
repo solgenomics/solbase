@@ -1,0 +1,1 @@
+nginx logs from nginx container will be stored here automatically using docker volumes mounting

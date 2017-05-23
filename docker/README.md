@@ -4,58 +4,28 @@
 
 ## Docker Cloud Repository
 
-Built docker containers for solbase are available here https://hub.docker.com/r/muellerlab/solbase/
+Built docker containers for solbase are available here https://hub.docker.com/r/muellerlab/
 
 ## Running a Single Container
 
 Container version numbers can be found in the docker repository above.
 
 ```
-docker run muellerlab/solbase:1.05
+docker run -p 3000:3000 muellerlab/solbase:1.05
 ```
 
-## Running a Swarm of Containers
+You should see the web service running on your browser if you go to localhost:3000
 
-Copy this docker-compose.yml file onto your machine.
+However, our docker deployment is a distribution of three containers: solbase, postgres, and nginx.
+To bundle these three together, you can run a stack described below.
 
-```
-version: "3"
-services:
-  solbase:
-    image: muellerlab/solbase:1.05
-    depends_on:
-      - postgres
-      - nginx
-    deploy:
-      replicas: 5
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 50M
-      restart_policy:
-        condition: on-failure
-    ports:
-      - "3000:3000"
-  postgres:
-    image: postgres:9.5
-    ports:
-    - "5432:5432"
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    volumes:
-      - ./data/postgres:/var/lib/postgresql/data
-  nginx:
-    image: nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx:/etc/nginx/
-```
+## Running a Stack of Containers
 
-Then execute
+Clone this repository on your machine and go to docker directory, then execute:
 
 ```
 docker swarm init
 docker stack deploy -c docker-compose.yml solbase
 ```
+
+You should see the complete web service running on your browser if you go to localhost
