@@ -81,12 +81,13 @@
 	sudo apt-get install -y xvfb
 
 	#NCBI Blast (legacy blastall)
-	mkdir /home/vagrant/blast
-	cd /home/vagrant/blast
+    mkdir /cxgn
+	mkdir /cxgn/blast
+	cd /cxgn/blast
 
 	wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy/2.2.9/blast-2.2.9-amd64-linux.tar.gz
 	tar zxvpf blast-2.2.9-amd64-linux.tar.gz
-	sudo sed -i '$ a\export PATH="$PATH:/home/vagrant/blast/"' /home/vagrant/.bashrc
+	sudo sed -i '$ a\export PATH="$PATH:/cxgn/blast/"' /home/vagrant/.bashrc
 	rm blast-2.2.9-amd64-linux.tar.gz
 
 	#sudo apt-get install ncbi-blast+ -y #latest relaese of BLAST
@@ -138,8 +139,7 @@
 
 
 	#Make and populate cxgn directory
-	sudo mkdir /home/vagrant/cxgn
-	cd /home/vagrant/cxgn
+	cd /cxgn
 	git clone https://github.com/solgenomics/sgn.git
 	git clone https://github.com/solgenomics/cxgn-corelibs.git
 	git clone https://github.com/solgenomics/Phenome.git
@@ -155,6 +155,7 @@
 	git clone https://github.com/solgenomics/art.git
 	git clone https://github.com/solgenomics/VIGS.git
 	git clone https://github.com/solgenomics/fixture.git
+	git clone https://github.com/solgenomics/starmachine.git
 
 	#Mason website skins
 	git clone https://github.com/solgenomics/cassava.git
@@ -170,126 +171,10 @@
 
 
 	#Install Perl Modules
-	sudo cpanm install Catalyst::ScriptRunner
-	sudo cpanm Catalyst::Restarter
-	sudo cpanm HTML::Mason::Interp
-	sudo cpanm Selenium::Remote::Driver
-	sudo cpanm DBI
-	sudo cpanm Hash::Merge
-	sudo cpanm DBIx::Connector
-	sudo cpanm Catalyst::Plugin::Authorization::Roles
-	sudo cpanm Bio::PrimarySeq
-	sudo cpanm Class::DBI
-	sudo cpanm Tie::UrlEncoder
-	sudo cpanm Data::BitMask
-	sudo cpanm enum
-	sudo cpanm File::NFSLock
-	sudo cpanm Class::MethodMaker
-	sudo cpanm Bio::BLAST::Database
-	sudo cpanm Catalyst::Plugin::SmartURI
-	sudo cpanm Modern::Perl
-	sudo cpanm List::Compare
-	sudo cpanm Cache::File
-	sudo cpanm Config::JFDI
-	sudo cpanm CatalystX::GlobalContext --force
-	sudo cpanm DBIx::Class::Schema
-	sudo cpanm Bio::Chado::Schema
-	sudo cpanm Array::Utils
-	sudo cpanm JSON::Any
-	sudo cpanm Math::Round
-	sudo cpanm Math::Round::Var
-	sudo cpanm Catalyst::View::Email
-	sudo cpanm Catalyst::View::HTML::Mason
-	sudo cpanm Catalyst::View::Bio::SeqIO
-	sudo cpanm Catalyst::View::JavaScript::Minifier::XS@2.101001
-	sudo cpanm Catalyst::View::Download::CSV
-	sudo cpanm URI::FromHash
-	sudo cpanm JSAN::ServerSide
-	sudo cpanm Config::INI::Reader
-	sudo cpanm Bio::GFF3::LowLevel
-	sudo cpanm Statistics::Descriptive
-	sudo cpanm String::Random
-	sudo cpanm MooseX::FollowPBP
-	sudo apt-get install libgd2-xpm-dev -y
-	sudo cpanm GD
-	sudo cpanm Tie::Function
-	sudo cpanm Digest::Crc32
-	sudo cpanm Barcode::Code128
-	sudo cpanm Math::Base36
-	sudo cpanm Captcha::reCAPTCHA
-	sudo cpanm Test::Aggregate::Nested --force
-	sudo cpanm HTML::FormFu
-	sudo cpanm SVG
-	sudo cpanm IPC::Run3
-	sudo cpanm Spreadsheet::WriteExcel
-	sudo cpanm MooseX::Object::Pluggable
-	sudo cpanm R::YapRI::Base
-	sudo cpanm PDF::Create
-	sudo cpanm String::CRC
-	sudo cpanm Algorithm::Combinatorics
-	sudo cpanm Catalyst::Controller::HTML::FormFu
-	sudo cpanm String::Approx
-	sudo apt-get install libcairo2-dev -y
-	sudo cpanm Cairo
-	sudo cpanm Chart::Clicker
-	sudo cpanm Spreadsheet::ParseExcel
-	sudo cpanm MooseX::Types::URI
-	sudo cpanm Bio::Graphics::FeatureFile --force
-	sudo cpanm Mail::Sendmail
-	sudo cpanm Array::Compare
-	sudo cpanm GD::Graph::lines
-	sudo cpanm GD::Graph::Map
-	sudo cpanm Bio::GMOD::GenericGenePage
-	sudo cpanm Number::Bytes::Human
-	sudo cpanm AnyEvent --force
-	sudo cpanm IO::Event --force
-	sudo cpanm File::Flock
-	sudo cpanm Graph
-	sudo cpanm Bio::SeqFeature::Annotated
-	sudo cpanm XML::Twig
-	sudo cpanm XML::Generator
-	sudo apt-get install libpq-dev -y
-	sudo cpanm DBD::Pg
-	sudo cpanm MooseX::Runnable@0.09
-	sudo cpanm XML::Feed
-	sudo cpanm Parse::Deb::Control
-	sudo cpanm Bio::GMOD::Blast::Graph
-	sudo cpanm Catalyst::DispatchType::Regex
-	sudo cpanm DateTime::Format::Flexible
-	sudo cpanm DateTime::Format::Pg
-	sudo cpanm HTML::TreeBuilder::XPath
-	sudo cpanm JSON::XS
-	sudo cpanm Lingua::EN::Inflect
-	sudo cpanm List::AllUtils
-	sudo cpanm MooseX::Declare
-	sudo cpanm MooseX::Singleton
-	sudo cpanm SOAP::Transport::HTTP
-	sudo cpanm Test::Class
-	sudo cpanm WWW::Mechanize::TreeBuilder
-	sudo cpanm Data::UUID
-	sudo cpanm HTML::Lint --force
-	sudo cpanm Test::JSON
-	sudo cpanm Test::MockObject
-	sudo cpanm Test::WWW::Selenium
-	sudo cpanm Sort::Versions
-	sudo cpanm Term::ReadKey --force
-	sudo cpanm Spreadsheet::Read
-	sudo cpanm Sort::Maker
-	sudo cpanm Term::Size::Any
-	sudo cpanm Proc::ProcessTable
-	sudo cpanm URI::Encode
-	sudo cpanm Archive::Zip
-	sudo cpanm Statistics::R
-	sudo cpanm Lucy::Simple
-	sudo cpanm DBIx::Class::Schema::Loader
-	sudo cpanm Text::CSV
-	sudo cpanm Imager::QRCode
-	sudo cpanm GD::Barcode::QRcode
-	sudo cpanm LWP::UserAgent
-
-	#Extract perl libs from vagrant shared config folder. Contains all of the sudo cpanm install commands above.
-	#sudo tar -xf /vagrant/config/perl_lib.tar.gz -C /  ##/usr/local/share/perl/5.20.2/
-	#sudo tar -xf /vagrant/config/perl_local_lib.tar.gz -C /  ##/usr/local/lib/x86_64-linux-gnu/perl/5.20.2/
+    mkdir local-lib
+    cd /cxgn/sgn
+    sudo apt-get install -y libgd2-xpm-dev libcairo2-dev libpq-dev
+	cpanm -L ../local-lib/ install Catalyst::ScriptRunner Catalyst::Restarter HTML::Mason::Interp Selenium::Remote::Driver DBI Hash::Merge DBIx::Connector Catalyst::Plugin::Authorization::Roles Bio::PrimarySeq Class::DBI Tie::UrlEncoder Data::BitMask enum File::NFSLock Class::MethodMaker Bio::BLAST::Database Catalyst::Plugin::SmartURI Modern::Perl List::Compare Cache::File Config::JFDI CatalystX::GlobalContext --force DBIx::Class::Schema Bio::Chado::Schema Array::Utils JSON::Any Math::Round Math::Round::Var Catalyst::View::Email Catalyst::View::HTML::Mason Catalyst::View::Bio::SeqIO Catalyst::View::JavaScript::Minifier::XS@2.101001 Catalyst::View::Download::CSV URI::FromHash JSAN::ServerSide Config::INI::Reader Bio::GFF3::LowLevel Statistics::Descriptive String::Random MooseX::FollowPBP GD Tie::Function Digest::Crc32 Barcode::Code128 Math::Base36 Captcha::reCAPTCHA Test::Aggregate::Nested --force HTML::FormFu SVG IPC::Run3 Spreadsheet::WriteExcel MooseX::Object::Pluggable R::YapRI::Base PDF::Create String::CRC Algorithm::Combinatorics Catalyst::Controller::HTML::FormFu String::Approx Cairo Chart::Clicker Spreadsheet::ParseExcel MooseX::Types::URI Bio::Graphics::FeatureFile --force Mail::Sendmail Array::Compare GD::Graph::lines GD::Graph::Map Bio::GMOD::GenericGenePage Number::Bytes::Human AnyEvent --force IO::Event --force File::Flock Graph Bio::SeqFeature::Annotated XML::Twig XML::Generator DBD::Pg MooseX::Runnable@0.09 XML::Feed Parse::Deb::Control Bio::GMOD::Blast::Graph Catalyst::DispatchType::Regex DateTime::Format::Flexible DateTime::Format::Pg HTML::TreeBuilder::XPath JSON::XS Lingua::EN::Inflect List::AllUtils MooseX::Declare MooseX::Singleton SOAP::Transport::HTTP Test::Class WWW::Mechanize::TreeBuilder Data::UUID HTML::Lint --force Test::JSON Test::MockObject Test::WWW::Selenium Sort::Versions Term::ReadKey --force Spreadsheet::Read Sort::Maker Term::Size::Any Proc::ProcessTable URI::Encode Archive::Zip Statistics::R Lucy::Simple DBIx::Class::Schema::Loader Text::CSV Imager::QRCode GD::Barcode::QRcode LWP::UserAgent
 
 	sudo mkdir /export
 	sudo mkdir /export/prod
@@ -309,8 +194,8 @@
 	sudo chown -R vagrant:vagrant /export/prod/
 
 	#Add sgn_local.conf to sgn directory, copied from shared config directory
-	sudo cp /vagrant/config/sgn_local.conf /home/vagrant/cxgn/sgn
-	sudo chown -R vagrant:vagrant /home/vagrant/cxgn/
+	sudo cp /vagrant/config/sgn_local.conf /cxgn/sgn
+	sudo chown -R vagrant:vagrant /cxgn/
 
 	#Install postgres 9.4
 	#sudo apt-get install postgresql-9.4 -y
@@ -337,7 +222,7 @@
 
 	#Create fixture db and load fixture.sql
 	sudo -u postgres createdb -E UTF8 --locale en_US.utf8 -T template0 fixture
-	sudo psql -U postgres -d fixture -f /home/vagrant/cxgn/fixture/cxgn_fixture.sql
+	sudo psql -U postgres -d fixture -f /cxgn/fixture/cxgn_fixture.sql
 	echo "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO web_usr;" | psql -U postgres -d fixture
 	echo "GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO web_usr;" | psql -U postgres -d fixture
 
@@ -380,7 +265,7 @@
 	sudo R -e "install.packages('tidyr', dependencies=TRUE, repos='http://cran.rstudio.com/')"
 	sudo R -e "install.packages('ggplot2', dependencies=TRUE, repos='http://cran.rstudio.com/')"
 
-	cd /home/vagrant/cxgn
+	cd /cxgn
 
 	#Download selenium 2.53.0
 	wget https://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.0.jar
@@ -431,4 +316,9 @@
 	sed -i '$ a\unset color_prompt force_color_prompt' /home/vagrant/.bashrc
 
 	#Add Perl paths
-	sudo sed -i '$ a\export PERL5LIB="$PERL5LIB:/usr/local/lib/x86_64-linux-gnu/perl/5.20.2:/usr/local/share/perl/5.20.2:/home/vagrant/cxgn/sgn/lib:/home/vagrant/cxgn/cxgn-corelibs/lib:/home/vagrant/cxgn/Phenome/lib:/home/vagrant/cxgn/Cview/lib:/home/vagrant/cxgn/ITAG/lib:/home/vagrant/cxgn/biosource/lib:/home/vagrant/cxgn/tomato_genome/lib:/home/vagrant/cxgn/Barcode-Code128/lib:/home/vagrant/cxgn/solGS/lib:/home/vagrant/cxgn/Chado/chado/lib:/home/vagrant/cxgn/Tea/lib:/home/production/cxgn/Tea"' /home/vagrant/.bashrc
+	sudo sed -i '$ a\export PERL5LIB="$PERL5LIB:/cxgn/local-lib:/cxgn/sgn/lib:/cxgn/cxgn-corelibs/lib:/cxgn/Phenome/lib:/cxgn/Cview/lib:/cxgn/ITAG/lib:/cxgn/biosource/lib:/cxgn/tomato_genome/lib:/cxgn/Barcode-Code128/lib:/cxgn/solGS/lib:/cxgn/Chado/chado/lib:/cxgn/Tea/lib:/cxgn/Tea"' /home/vagrant/.bashrc
+
+    sudo mkdir /etc/starmachine
+    sudo cp /vagrant/config/starmachine.conf /etc/starmachine/
+    sudo ln -s /cxgn/starmachine/bin/starmachine_init.d /etc/init.d/sgn
+    sudo service sgn start

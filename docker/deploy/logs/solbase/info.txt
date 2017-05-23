@@ -1,0 +1,2 @@
+sgn logs from solbase container will be stored here automatically using docker volumes mounting.
+sgn service runs through starmachine, so log paths are set in /config/starmachine.conf

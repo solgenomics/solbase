@@ -1,0 +1,1 @@
+files can be shared to the vagrant machine through this directory
