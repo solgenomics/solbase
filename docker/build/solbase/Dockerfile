@@ -5,7 +5,7 @@ ENV NAME sgndev
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Copy the current directory contents into the container at /config
-ADD . /config
+ADD ./../../../config/ /config
 
 # Create docker user
 RUN useradd -m docker \
@@ -14,7 +14,7 @@ RUN useradd -m docker \
 
 RUN apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade \
 	&& apt-get update \
-	&& apt-get install -y apt-utils gcc build-essential module-assistant sudo emacs gedit vim less htop git perl-doc memtester ack-grep xutils-dev curl nginx nmap graphviz imagemagick wget
+	&& apt-get install -y apt-utils gcc build-essential module-assistant sudo nano htop git curl graphviz imagemagick wget
 
 # Install R
 RUN apt-get install apt-transport-https -y \
