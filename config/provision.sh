@@ -264,6 +264,7 @@
 	sudo R -e "install.packages('d3heatmap', dependencies=TRUE, repos='http://cran.rstudio.com/')"
 	sudo R -e "install.packages('tidyr', dependencies=TRUE, repos='http://cran.rstudio.com/')"
 	sudo R -e "install.packages('ggplot2', dependencies=TRUE, repos='http://cran.rstudio.com/')"
+	sudo R -e "install.packages('devtools', dependencies=TRUE, repos='http://cran.rstudio.com/')"
 	sudo R -e 'source("http://bioconductor.org/biocLite.R");biocLite("gdsfmt");biocLite("SNPRelate")'
 	sudo R -e 'library("devtools");install_github("solgenomics/rPackages/genoDataFilter");install_github("solgenomics/rPackages/phenoAnalysis")'
 
