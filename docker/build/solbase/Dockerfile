@@ -69,7 +69,7 @@ RUN R -e "install.packages('devtools', dependencies=TRUE, repos='http://cran.rst
     && R -e "install.packages('caret', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
     && R -e "install.packages('R.oo', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
     && R -e 'source("http://bioconductor.org/biocLite.R");biocLite();biocLite("gdsfmt");biocLite("SNPRelate")' \
-    && R -e 'library("devtools");install_github("cran/R.methodsS3");install_github("solgenomics/rPackages/genoDataFilter");install_github("solgenomics/rPackages/phenoAnalysis")'
+    && R -e 'library("devtools");install_github("cran/R.methodsS3");install_github("solgenomics/rPackages/genoDataFilter");install_github("solgenomics/rPackages/phenoAnalysis");install_github("reyzaguirre/st4gi")'
     
 
 # Install Legacy NCBI Blast
